@@ -21,25 +21,25 @@ Professional, trustworthy, and elegant aesthetic. All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 210 25% 8%;
     
-    /* Corporate Blue Primary */
-    --primary: 220 90% 25%;
+    /* Maven Purple Primary - matching mavenaitech.com */
+    --primary: 258 100% 70%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 220 85% 35%;
-    --primary-hover: 220 95% 20%;
+    --primary-light: 258 85% 80%;
+    --primary-hover: 258 100% 65%;
     
     /* Elegant Secondary */
-    --secondary: 210 20% 96%;
+    --secondary: 258 20% 96%;
     --secondary-foreground: 210 25% 8%;
-    --secondary-hover: 210 25% 92%;
+    --secondary-hover: 258 25% 92%;
     
     /* Professional Muted */
     --muted: 210 15% 97%;
     --muted-foreground: 210 15% 45%;
     
     /* Corporate Accent */
-    --accent: 220 90% 25%;
+    --accent: 258 100% 70%;
     --accent-foreground: 0 0% 100%;
-    --accent-light: 220 85% 85%;
+    --accent-light: 258 85% 85%;
     
     /* System Colors */
     --destructive: 0 84.2% 60.2%;
@@ -51,14 +51,15 @@ Professional, trustworthy, and elegant aesthetic. All colors MUST be HSL.
     
     /* Corporate Borders & Shadows */
     --radius: 0.75rem;
-    --shadow-corporate: 0 4px 20px -2px hsl(220 90% 25% / 0.08);
-    --shadow-card: 0 2px 12px -4px hsl(220 90% 25% / 0.12);
-    --shadow-hover: 0 8px 32px -8px hsl(220 90% 25% / 0.15);
+    --shadow-corporate: 0 4px 20px -2px hsl(258 100% 70% / 0.08);
+    --shadow-card: 0 2px 12px -4px hsl(258 100% 70% / 0.12);
+    --shadow-hover: 0 8px 32px -8px hsl(258 100% 70% / 0.15);
     
-    /* Corporate Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(220 90% 25%), hsl(220 85% 35%));
+    /* Maven Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(258 100% 70%), hsl(258 85% 80%));
+    --gradient-purple: linear-gradient(135deg, hsl(258 100% 70%), hsl(230 100% 75%));
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 15% 99%));
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 20% 98%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(258 20% 98%));
 
     --sidebar-background: 0 0% 98%;
 
@@ -127,40 +128,78 @@ Professional, trustworthy, and elegant aesthetic. All colors MUST be HSL.
 }
 
 @layer components {
-  /* Corporate Hero Section */
-  .hero-title {
-    @apply text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent;
-    text-shadow: 0 2px 4px hsl(220 90% 25% / 0.1);
+  /* Solterra-Inspired Hero Section */
+  .hero-section {
+    @apply relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
   }
 
-  /* Corporate Tile Components */
+  .hero-title {
+    @apply text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-subtitle {
+    @apply text-lg md:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Spacious Company Tiles */
   .company-tile {
-    @apply relative p-8 rounded-xl bg-card border border-border shadow-[var(--shadow-card)] 
-           hover:shadow-[var(--shadow-hover)] hover:bg-card-hover 
-           transition-all duration-300 ease-out cursor-pointer;
-    background: var(--gradient-card);
+    @apply relative h-80 rounded-2xl overflow-hidden shadow-[var(--shadow-card)] 
+           hover:shadow-[var(--shadow-hover)] transition-all duration-500 ease-out cursor-pointer;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .company-tile::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent;
   }
 
   .company-tile:hover {
-    transform: translateY(-4px);
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  .company-tile-content {
+    @apply absolute bottom-0 left-0 right-0 p-8 text-white z-10;
   }
 
   .company-tile-name {
-    @apply text-xl font-semibold text-card-foreground group-hover:text-primary 
-           transition-colors duration-300;
+    @apply text-2xl font-bold mb-3 group-hover:text-primary-light transition-colors duration-300;
+  }
+
+  .company-tile-description {
+    @apply text-sm text-white/80 mb-4;
+  }
+
+  .company-tile-link {
+    @apply inline-flex items-center text-sm font-medium text-primary-light 
+           opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0;
+  }
+
+  /* Spacious Sections */
+  .section-spacing {
+    @apply py-24 md:py-32;
+  }
+
+  .container-spacing {
+    @apply container mx-auto px-6 lg:px-8;
   }
 
   /* Fade-in Animation */
   .fade-in {
     animation: fadeIn 0.8s ease-out forwards;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
 
   .fade-in-delay-1 { animation-delay: 0.2s; }
   .fade-in-delay-2 { animation-delay: 0.4s; }
   .fade-in-delay-3 { animation-delay: 0.6s; }
   .fade-in-delay-4 { animation-delay: 0.8s; }
+  .fade-in-delay-5 { animation-delay: 1.0s; }
 }
 
 @keyframes fadeIn {

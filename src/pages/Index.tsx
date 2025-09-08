@@ -1,31 +1,41 @@
 import { useEffect } from 'react';
+import heroBackground from '@/assets/hero-background.jpg';
+import aiTechBg from '@/assets/ai-tech-bg.jpg';
+import investmentsBg from '@/assets/investments-bg.jpg';
+import contractorsBg from '@/assets/contractors-bg.jpg';
+import ecommerceBg from '@/assets/ecommerce-bg.jpg';
 
 interface SubCompany {
   name: string;
   url: string;
   description: string;
+  backgroundImage: string;
 }
 
 const subCompanies: SubCompany[] = [
   {
     name: "Maven AI Tech",
     url: "https://mavenaitech.com/",
-    description: "AI Technology Solutions"
+    description: "AI Technology Solutions",
+    backgroundImage: aiTechBg
   },
   {
     name: "Maven Investments",
     url: "#",
-    description: "Investment Management"
+    description: "Investment Management",
+    backgroundImage: investmentsBg
   },
   {
     name: "Maven Contractors",
     url: "#",
-    description: "Construction & Development"
+    description: "Construction & Development",
+    backgroundImage: contractorsBg
   },
   {
     name: "Maven eCommerce",
     url: "#",
-    description: "E-Commerce Solutions"
+    description: "E-Commerce Solutions",
+    backgroundImage: ecommerceBg
   }
 ];
 
@@ -47,25 +57,42 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <main className="container mx-auto px-6 py-16">
-        <section className="text-center mb-20">
-          <h1 className="hero-title fade-in mb-6">
+      {/* Solterra-Inspired Hero Section */}
+      <section 
+        className="hero-section fade-in"
+        style={{ 
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${heroBackground})`
+        }}
+      >
+        <div className="container-spacing text-center">
+          <h1 className="hero-title mb-8 fade-in">
             The Mavens Group
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto fade-in fade-in-delay-1">
+          <p className="hero-subtitle fade-in fade-in-delay-1">
             A leading business conglomerate delivering excellence across multiple industries 
             through our specialized subsidiary companies.
           </p>
-        </section>
+        </div>
+      </section>
 
-        {/* Sub-Companies Grid */}
-        <section className="mb-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+      {/* Sub-Companies Grid with Spacious Layout */}
+      <section className="section-spacing bg-background">
+        <div className="container-spacing">
+          <div className="text-center mb-20 fade-in fade-in-delay-2">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Our Companies
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Discover our specialized subsidiaries, each excelling in their respective industries
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {subCompanies.map((company, index) => (
               <div
                 key={company.name}
-                className={`company-tile group fade-in fade-in-delay-${index + 1}`}
+                className={`company-tile group fade-in fade-in-delay-${index + 3}`}
+                style={{ backgroundImage: `url(${company.backgroundImage})` }}
                 onClick={() => handleTileClick(company.url)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -76,67 +103,71 @@ const Index = () => {
                 role="button"
                 aria-label={`Visit ${company.name} website`}
               >
-                <div className="text-center">
-                  <h3 className="company-tile-name mb-3">
+                <div className="company-tile-content">
+                  <h3 className="company-tile-name">
                     {company.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="company-tile-description">
                     {company.description}
                   </p>
-                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-xs text-primary font-medium">
-                      Learn More →
-                    </span>
-                  </div>
+                  <span className="company-tile-link">
+                    Learn More →
+                  </span>
                 </div>
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Features Section */}
-        <section className="text-center mb-16 fade-in fade-in-delay-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-semibold text-foreground mb-8">
+      {/* Features Section with More Space */}
+      <section className="section-spacing bg-muted/30">
+        <div className="container-spacing">
+          <div className="text-center mb-20 fade-in fade-in-delay-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Trusted Excellence Across Industries
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <div className="w-6 h-6 bg-primary rounded"></div>
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Innovation</h3>
-                <p className="text-muted-foreground text-sm">
-                  Leading-edge solutions across all our business verticals
-                </p>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Our commitment to innovation, reliability, and excellence drives everything we do
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+            <div className="text-center fade-in fade-in-delay-5">
+              <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-10 h-10 bg-primary rounded-xl"></div>
               </div>
-              <div className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <div className="w-6 h-6 bg-primary rounded"></div>
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Reliability</h3>
-                <p className="text-muted-foreground text-sm">
-                  Consistent delivery and long-term partnership commitment
-                </p>
+              <h3 className="text-2xl font-bold mb-4">Innovation</h3>
+              <p className="text-muted-foreground text-lg">
+                Leading-edge solutions across all our business verticals
+              </p>
+            </div>
+            <div className="text-center fade-in fade-in-delay-5">
+              <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-10 h-10 bg-primary rounded-xl"></div>
               </div>
-              <div className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <div className="w-6 h-6 bg-primary rounded"></div>
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Excellence</h3>
-                <p className="text-muted-foreground text-sm">
-                  Uncompromising quality standards in everything we do
-                </p>
+              <h3 className="text-2xl font-bold mb-4">Reliability</h3>
+              <p className="text-muted-foreground text-lg">
+                Consistent delivery and long-term partnership commitment
+              </p>
+            </div>
+            <div className="text-center fade-in fade-in-delay-5">
+              <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-10 h-10 bg-primary rounded-xl"></div>
               </div>
+              <h3 className="text-2xl font-bold mb-4">Excellence</h3>
+              <p className="text-muted-foreground text-lg">
+                Uncompromising quality standards in everything we do
+              </p>
             </div>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-muted/30">
-        <div className="container mx-auto px-6 py-8 text-center">
-          <p className="text-muted-foreground text-sm">
+      {/* Footer with More Space */}
+      <footer className="border-t border-border bg-background">
+        <div className="container-spacing py-16 text-center">
+          <p className="text-muted-foreground text-lg">
             © 2025 The Mavens Group. All rights reserved.
           </p>
         </div>
