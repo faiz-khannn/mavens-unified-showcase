@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import heroBackground from '@/assets/hero-background.jpg';
 import aiTechBg from '@/assets/ai-tech-bg.jpg';
 import investmentsBg from '@/assets/investments-bg.jpg';
@@ -20,26 +21,28 @@ const subCompanies: SubCompany[] = [
     backgroundImage: aiTechBg
   },
   {
-    name: "Maven Investments",
-    url: "#",
-    description: "Investment Management",
+    name: "Maven Financial Services",
+    url: "coming-soon",
+    description: "Financial Services & Investment Management",
     backgroundImage: investmentsBg
   },
   {
     name: "Maven Contractors",
-    url: "#",
+    url: "coming-soon",
     description: "Construction & Development",
     backgroundImage: contractorsBg
   },
   {
-    name: "Maven eCommerce",
-    url: "#",
-    description: "E-Commerce Solutions",
+    name: "Maven eCommerce and Affiliates",
+    url: "coming-soon",
+    description: "E-Commerce Solutions & Affiliate Networks",
     backgroundImage: ecommerceBg
   }
 ];
 
 const Index = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     // Add smooth scrolling behavior
     document.documentElement.style.scrollBehavior = 'smooth';
@@ -50,7 +53,9 @@ const Index = () => {
   }, []);
 
   const handleTileClick = (url: string) => {
-    if (url !== "#") {
+    if (url === "coming-soon") {
+      navigate('/coming-soon');
+    } else if (url !== "#") {
       window.open(url, '_blank', 'noopener,noreferrer');
     }
   };
@@ -120,12 +125,31 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section with More Space */}
+      {/* About Us Section */}
       <section className="section-spacing bg-muted/30">
         <div className="container-spacing">
           <div className="text-center mb-20 fade-in fade-in-delay-4">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Trusted Excellence Across Industries
+              About Us
+            </h2>
+            <div className="max-w-4xl mx-auto">
+              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+                The Maven Group is a collective of dynamic, purpose-driven companies unified by a common mission — to generate sustainable income and channel it toward the establishment and support of high-quality educational institutions. With diversified ventures across technology consultancy, contracting, organics, stock markets, and other sectors. The Maven Group operates not just with commercial intent, but with a higher goal: to reinvest profits into education, community empowerment, and long-term development.
+              </p>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Rooted in strong ethical values and a forward-thinking approach, The Maven Group is committed to creating impactful businesses that not only thrive in their respective industries but also serve as financial pillars for educational transformation. We believe that true success lies in uplifting others — and education is our most powerful tool to achieve that.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section with More Space */}
+      <section className="section-spacing bg-background">
+        <div className="container-spacing">
+          <div className="text-center mb-20 fade-in fade-in-delay-5">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Our Values
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Our commitment to innovation, reliability, and excellence drives everything we do
@@ -133,7 +157,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-            <div className="text-center fade-in fade-in-delay-5">
+            <div className="text-center fade-in fade-in-delay-6">
               <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <div className="w-10 h-10 bg-primary rounded-xl"></div>
               </div>
@@ -142,7 +166,7 @@ const Index = () => {
                 Leading-edge solutions across all our business verticals
               </p>
             </div>
-            <div className="text-center fade-in fade-in-delay-5">
+            <div className="text-center fade-in fade-in-delay-6">
               <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <div className="w-10 h-10 bg-primary rounded-xl"></div>
               </div>
@@ -151,7 +175,7 @@ const Index = () => {
                 Consistent delivery and long-term partnership commitment
               </p>
             </div>
-            <div className="text-center fade-in fade-in-delay-5">
+            <div className="text-center fade-in fade-in-delay-6">
               <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <div className="w-10 h-10 bg-primary rounded-xl"></div>
               </div>
