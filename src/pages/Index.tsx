@@ -65,7 +65,7 @@ const Index = () => {
             {subCompanies.map((company, index) => (
               <div
                 key={company.name}
-                className={`company-tile fade-in fade-in-delay-${index + 1}`}
+                className={`company-tile group fade-in fade-in-delay-${index + 1}`}
                 onClick={() => handleTileClick(company.url)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
